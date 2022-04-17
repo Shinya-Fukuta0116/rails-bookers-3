@@ -1,0 +1,25 @@
+<main>
+    <p id="notice"></p>
+      <div class="container">
+          <div class="row">
+            <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+            <h2>User info</h2>
+            <%= form_with model: @user do |f| %>
+              <label for="user_name">Name</label>
+              </br>
+              <%= f.text_field :name, autofocus: true, id:"user_name", placeholder:"Name"%>
+              </br>
+              <label for="user_image">Image</label>
+              </br>
+              <%= f.file_field :image, placeholder: "Image", accept: "image/*" %>
+              </br>
+              <label for="user_introduction">Introduction</label>
+              </br>
+              <%= f.text_area :introduction, autofocus: true, id:"user_introduction", placeholder:"Introduciton" %>
+              </br>
+              <%= f.submit "Upadate User" %>
+            <% end %>
+          </div>
+        </div>
+    </div>
+</main>
