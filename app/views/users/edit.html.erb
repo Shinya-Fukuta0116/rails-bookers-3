@@ -1,5 +1,7 @@
 <main>
-    <p id="notice"></p>
+  <div class="text-success">
+    <%= flash[:notice] %>
+  </div>
       <div class="container">
           <div class="row">
             <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
@@ -11,7 +13,7 @@
               </br>
               <label for="user_image">Image</label>
               </br>
-              <%= f.file_field :image, placeholder: "Image", accept: "image/*" %>
+              <%= f.file_field :profile_image, placeholder: "Image", accept: "image/*" %>
               </br>
               <label for="user_introduction">Introduction</label>
               </br>

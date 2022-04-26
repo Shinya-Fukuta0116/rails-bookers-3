@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     @user = User.new
     end
     def index
+    @books = Book.all
     @book = Book.new
     @book = Book.new
     @user = current_user
@@ -26,7 +27,7 @@ class UsersController < ApplicationController
     def update
     @user = User.find(params[:id])
     @user.update(user_params)
-    redirect_to user_path(@user.id)
+    redirect_to user_path(@user.id), notice: "You have updated user successfully."
     end    
     
     def destroy
@@ -35,7 +36,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-      params.require(:user).permit(:name, :image, :introduction)
+      params.require(:user).permit(:name, :profile_image, :introduction)
     end
 end
 
