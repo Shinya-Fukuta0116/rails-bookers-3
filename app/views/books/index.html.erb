@@ -1,5 +1,5 @@
-<p id="notice"></p>   
-  <div class="container px-5 px-sm-0"> 
+<p id="notice"></p>
+  <div class="container px-5 px-sm-0">
   <% if @book.errors.any? %>
   <div id="error_explanation" class="alert alert-danger">
     <ul>
@@ -54,7 +54,7 @@
             </tr>
           </thead>
           <tbody>
-        <% @books.each do |book| %> 
+        <% @books.each do |book| %>
           <tr>
             <td><%=link_to user_path(book.user.id) do %>
             <%= image_tag book.user.get_profile_image(200, 200) %>
@@ -69,5 +69,4 @@
       </div>
     </div>
   </div>
-      
-    
+

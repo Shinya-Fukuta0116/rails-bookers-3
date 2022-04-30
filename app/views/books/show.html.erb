@@ -9,7 +9,7 @@
             <table class="table">
               <tbody>
                 <tr></tr>
-                <tr></tr>  
+                <tr></tr>
 	                <th>name</th>
 	                <td><%= @user.name %></td>
                 <tr>
@@ -20,7 +20,7 @@
               </tbody>
             </table>
           <div class="row">
-          <%= link_to edit_user_path(current_user.id), class:"btn btn-outline-secondary btn-block" do %>
+          <%= link_to edit_user_path(@user.id), class:"btn btn-outline-secondary btn-block" do %>
             <i class="fas fa-user-cog"></i>
           <% end %>
           </div>
@@ -31,31 +31,33 @@
                 </br>
               <h5>Opinion</h5>
               <%= f.text_area :body %>
-                </br> 
+                </br>
               <%= f.submit 'Create Book' %>
           <% end %>
         </div>
     <div class="col-md-8 offset-md-1">
-      <h2>Books detail</h2>
+      <h2>Book detail</h2>
         <table class="table table-hover table-inverse">
           <tbody>
             <tr>
-              <% @books.each do |book| %>
-            <td><%= image_tag @user.get_profile_image(200, 200) %></br>
-                         <!--send the( @user.id) to users/show control-->
-            <%= link_to @user.id, user_path(@user.id) %>
-            </td>
+              <td>
+                <%= link_to user_path(@user.id) do %>
+                <%= image_tag @user.get_profile_image(200, 200) %>
+                <br>
+                <%= @user.name %>
+                <% end %>
+              </td>
             <td><%= link_to @bookdetail.title, book_path %></td>
             <td><%= @bookdetail.body %></td>
+                <% if @bookdetail.user == current_user %>
             <td><%= link_to "Edit", edit_book_path(@bookdetail.id), class:"btn btn-sm btn-success" %></td>
             <!--what u like to delete? @bookdetail.id so that link to destroy-->
             <td><%= link_to "Destroy", book_path(@bookdetail.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-sm btn-danger" %></td>
-            <% end %>
             </tr>
+                <% end %>
           </tbody>
         </table>
       </div>
     </div>
   </div>
-      
-    
+

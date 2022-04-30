@@ -1,15 +1,23 @@
 <main>
-  <div class="text-success">
-    <%= flash[:notice] %>
-  </div>
+    <p id="notice"></p>
       <div class="container">
           <div class="row">
             <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+            <% if @user.errors.any? %>
+              <%= @user.errors.count %> error prohibited this obj from being saved
+              <div id="error_explanation" class="alert alert-danger">
+                <ul>
+                  <% @user.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
             <h2>User info</h2>
             <%= form_with model: @user do |f| %>
               <label for="user_name">Name</label>
               </br>
-              <%= f.text_field :name, autofocus: true, id:"user_name", placeholder:"Name"%>
+              <%= f.text_field :name,class:"form-control" %>
               </br>
               <label for="user_image">Image</label>
               </br>
@@ -17,9 +25,9 @@
               </br>
               <label for="user_introduction">Introduction</label>
               </br>
-              <%= f.text_area :introduction, autofocus: true, id:"user_introduction", placeholder:"Introduciton" %>
+              <%= f.text_area :introduction, class:"form-control" %>
               </br>
-              <%= f.submit "Upadate User" %>
+              <%= f.submit "Update User", class:"btn btn-success" %>
             <% end %>
           </div>
         </div>
